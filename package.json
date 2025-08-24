@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.18.0",
+    "nanoid": "^5.1.5",
+    "nodemon": "^3.1.10"
+  },
+  "name": "short-url",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "repository": "git@github.com:govindthakur25/short-url.git",
+  "author": "govindthakur25@gmail.com",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "nodemon index.js"
+  }
+}
