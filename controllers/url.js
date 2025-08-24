@@ -1,6 +1,7 @@
 import { URL } from "../models/url.js";
 import { nanoid } from "nanoid";
 
+// POST: /api/url
 async function handleGenerateShortUrl(req, res) {
   const shortId = nanoid(8);
   if (!req.body.redirectUrl) {
@@ -14,7 +15,7 @@ async function handleGenerateShortUrl(req, res) {
   });
   res.status(201).json({ message: "Successful", shortUrl: shortId });
 }
-
+// GET: /api/url/:shortId
 async function handleGetShortUrl(req, res) {
   const shortId = req.params.shortId;
   const result = await URL.findOneAndUpdate(
@@ -30,6 +31,7 @@ async function handleGetShortUrl(req, res) {
   res.redirect(result.redirectUrl);
 }
 
+// GET: /api/url/:shortId/analytics
 async function handleGetAnalytics(req, res) {
   const shortId = req.params.shortId;
   const result = await URL.findOne({ shortId });
