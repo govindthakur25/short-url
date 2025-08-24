@@ -30,4 +30,13 @@ async function handleGetShortUrl(req, res) {
   res.redirect(result.redirectUrl);
 }
 
-export { handleGenerateShortUrl, handleGetShortUrl };
+async function handleGetAnalytics(req, res) {
+  const shortId = req.params.shortId;
+  const result = await URL.findOne({ shortId });
+  res.status(200).json({
+    totalClicks: result.visitHistory.length,
+    analytics: result.visitHistory,
+  });
+}
+
+export { handleGenerateShortUrl, handleGetShortUrl, handleGetAnalytics };
