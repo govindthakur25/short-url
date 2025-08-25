@@ -1,9 +1,11 @@
 import express from "express";
+import { URL } from "../models/url.js";
 
 const staticRouter = express.Router();
 
-staticRouter.get("/", (req, res) => {
-  res.render("home");
+staticRouter.get("/", async (req, res) => {
+  const allDbUrls = await URL.find({});
+  return res.render("home", { allDbUrls: allDbUrls });
 });
 
 export { staticRouter };

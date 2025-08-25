@@ -3,17 +3,17 @@ import { nanoid } from "nanoid";
 
 // POST: /api/url
 async function handleGenerateShortUrl(req, res) {
-  const shortId = nanoid(8);
-  if (!req.body.redirectUrl) {
+  if (!req.body?.redirectUrl) {
     return res.status(400).json({ message: "Redirect URL is required" });
   }
-  const redirectUrl = req.body.redirectUrl;
+  const redirectUrl = req.body?.redirectUrl;
+  const shortId = nanoid(8);
   const result = await URL.create({
     shortId: shortId,
     redirectUrl: redirectUrl,
     visitHistory: [],
   });
-  res.status(201).json({ message: "Successful", shortUrl: shortId });
+  res.render("home", { shortId: shortId });
 }
 // GET: /api/url/:shortId
 async function handleGetShortUrl(req, res) {

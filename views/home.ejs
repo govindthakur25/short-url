@@ -9,9 +9,43 @@
 </head>
 
 <body>
-    <h1>This is a Heading</h1>
-    <p>This is a paragraph.</p>
+    <h1>URL Shortner</h1>
+    <% if(locals.shortId) { %>
+        <p>Shortened URL: <%= shortId %>
+        </p>
+        <% } %>
+            <form method="post" action="/api/url">
+                <label>Enter your URL:</label>
+                <input type="text" name="redirectUrl" placeholder="http://www.abc.com" />
+                <button type="submit">Generate URL</button>
+            </form>
 
+            <% if (locals.allDbUrls) { %>
+                <table>
+                    <thead>
+                        <th>Short URL</th>
+                        <th>Redirect URL</th>
+                        <th>No. of clicks</th>
+                    </thead>
+                    <tbody>
+                        <% locals.allDbUrls.forEach(url=> { %>
+                            <tr>
+                                <td>
+                                    <%= url.shortId %>
+                                </td>
+                                <td>
+                                    <%= url.redirectUrl %>
+                                </td>
+
+                                <td>
+                                    <%= url.visitHistory.length %>
+                                </td>
+
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+                <% } %>
 </body>
 
 </html>

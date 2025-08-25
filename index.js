@@ -12,6 +12,8 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.use("/api/url", urlRouter);
 app.use("/", staticRouter);
 
