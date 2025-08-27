@@ -8,4 +8,8 @@ staticRouter.get("/", async (req, res) => {
   return res.render("home", { allDbUrls: allDbUrls });
 });
 
+staticRouter.get("/signup", async (req, res) => {
+  return res.render("signup");
+});
+
 export { staticRouter };
