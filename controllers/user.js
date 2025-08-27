@@ -10,4 +10,14 @@ async function handleUserSignup(req, res) {
   res.render("home");
 }
 
-export { handleUserSignup };
+async function handleUserSignin(req, res) {
+  const { email, password } = req.body;
+  const user = await User.findOne({
+    email,
+    password,
+  });
+  if (!user) res.render("/signin");
+  res.render("home");
+}
+
+export { handleUserSignup, handleUserSignin };
