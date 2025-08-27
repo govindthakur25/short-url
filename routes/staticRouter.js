@@ -12,4 +12,8 @@ staticRouter.get("/signup", async (req, res) => {
   return res.render("signup");
 });
 
+staticRouter.get("/signin", async (req, res) => {
+  return res.render("signin");
+});
+
 export { staticRouter };
