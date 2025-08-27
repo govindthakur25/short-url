@@ -7,7 +7,7 @@ async function handleUserSignup(req, res) {
     email,
     password,
   });
-  res.render("home");
+  res.redirect("/");
 }
 
 async function handleUserSignin(req, res) {
@@ -17,7 +17,7 @@ async function handleUserSignin(req, res) {
     password,
   });
   if (!user) res.render("/signin");
-  res.render("home");
+  res.redirect("/");
 }
 
 export { handleUserSignup, handleUserSignin };
